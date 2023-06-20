@@ -22,11 +22,11 @@ resource "google_compute_firewall" "allow-http" {
   network = local.network
   project = var.project
 
+  target_tags   = ["http-server"]
+  source_ranges = ["0.0.0.0/0"]
+
   allow {
     protocol = "tcp"
     ports    = ["80"]
   }
-
-  target_tags   = ["http-server"]
-  source_ranges = ["0.0.0.0/0"]
 }
